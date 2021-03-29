@@ -29,12 +29,12 @@ console commands
 }
 
 python environment packages
-    black
-    flake8
-    pep8-naming
-    flake8-variables-names
-    flake8-print
-    flake8-blind-except
-    flake8-comprehensions
-    flake8-use-fstring
-    twine
+    pip install black
+    pip install flake8
+    pip install pep8-naming
+    pip install flake8-variables-names
+    pip install flake8-print
+    pip install flake8-blind-except
+    pip install flake8-comprehensions
+    pip install flake8-use-fstring
+    pip install twine

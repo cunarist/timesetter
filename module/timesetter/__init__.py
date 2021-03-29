@@ -2,7 +2,7 @@ import os
 import platform
 import ctypes
 import time
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 
 def set(time_object):
@@ -10,7 +10,14 @@ def set(time_object):
     if type(time_object) != datetime:
         raise TypeError("Argument needs to be a datetime object")
 
-    # UTC 시각 기준으로 세팅
+    if time_object.tzinfo is None:
+        # if the object is timezone naive
+        # apply the system timezone to the object
+        system_timezone = timezone(timedelta(seconds=-time.timezone))
+        time_object = time_object.replace(tzinfo=system_timezone)
+
+    # now the time is represented in pure UTC timezone
+    time_object = time_object.astimezone(timezone.utc)
 
     if platform.system() == "Windows":
 
@@ -42,7 +49,7 @@ def set(time_object):
             time_object.hour,
             time_object.minute,
             time_object.second,
-            int(time_object.microsecond / 1000),  # 밀리초
+            int(time_object.microsecond / 1000),  # convert to milliseconds
         )
 
     elif platform.system() == "Linux":
@@ -54,7 +61,7 @@ def set(time_object):
             time_object.hour,
             time_object.minute,
             time_object.second,
-            int(time_object.microsecond / 1000),  # 밀리초
+            int(time_object.microsecond / 1000),  # convert to milliseconds
         )
         clock_realtime = 0
 
