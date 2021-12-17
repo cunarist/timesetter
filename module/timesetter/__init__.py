@@ -7,6 +7,9 @@ from datetime import datetime
 
 def set(time_object):
 
+    if type(time_object) != datetime:
+        raise TypeError("Argument needs to be a datetime object")
+
     # UTC 시각 기준으로 세팅
 
     if platform.system() == "Windows":
