@@ -1,2 +1,2 @@
-# set-system-time
-Python package to set system time
+# setsystemtime
+A Python package to set system time regardless of operating system

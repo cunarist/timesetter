@@ -1,0 +1,41 @@
+documntation
+    https://packaging.python.org/en/latest/tutorials/packaging-projects/
+
+console commands
+    python -m build
+    python -m twine upload dist/*
+
+./vscode/settings.json
+{
+    "python.defaultInterpreterPath": "C:\\Users\\temed\\miniconda3\\envs\\set-system-time\\python.exe",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--experimental-string-processing"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=88",
+        "--ignore=E203,W503",
+        "--use-varnames-strict-mode"
+    ],
+    "python.analysis.autoImportCompletions": false,
+    "cmake.buildDirectory": "${workspaceFolder}/.build",
+    "cmake.setBuildTypeOnMultiConfig": true,
+    "C_Cpp.clang_format_style": "Google",
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+}
+
+python environment packages
+    black
+    flake8
+    pep8-naming
+    flake8-variables-names
+    flake8-print
+    flake8-blind-except
+    flake8-comprehensions
+    flake8-use-fstring
+    twine
