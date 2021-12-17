@@ -1,9 +1,9 @@
 # About
 A Python package to set system time regardless of operating system
-## Support status
- - Windows: Yes
- - Linux: Yes
- - macOS: No
+## Supported platforms
+ - Windows
+ - Linux
+ - macOS
 ## Tips
  - This package aims to set system time in the precision of milliseconds.
  - You need to pass a datetime object to the `set` function. If the timezone information was not included in the time object(naive), the package will assume that it's identical to the system.
