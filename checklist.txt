@@ -7,7 +7,6 @@ console commands
 
 ./vscode/settings.json
 {
-    "python.defaultInterpreterPath": "C:\\Users\\temed\\miniconda3\\envs\\set-system-time\\python.exe",
     "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "editor.formatOnSave": true,
     "python.formatting.provider": "black",
