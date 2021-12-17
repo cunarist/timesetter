@@ -5,11 +5,16 @@ import time
 from datetime import datetime
 
 
-def to(time_object):
+def set(time_object):
 
     # UTC 시각 기준으로 세팅
 
     if platform.system() == "Windows":
+
+        if not is_admin():
+            raise PermissionError(
+                "Administrator privileges are needed to set system time on Windows"
+            )
 
         this_folder, _ = os.path.split(__file__)
         dll_filepath = os.path.join(this_folder, "on_windows.dll")
@@ -64,4 +69,12 @@ def to(time_object):
 
     elif platform.system() == "Darwin":  # macOS
 
-        pass
+        raise NotImplementedError("macOS is not supported yet")
+
+
+def is_admin():
+    try:
+        is_admin = os.getuid() == 0
+    except AttributeError:
+        is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+    return is_admin
