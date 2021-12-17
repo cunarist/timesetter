@@ -5,7 +5,8 @@ A Python package to set system time regardless of operating system
  - Linux: Yes
  - macOS: No
 ## Tips
-On Windows, you need to run your Python code with administration privileges for this package to work properly. Otherwise, `PermissionError` will be raised.
+ - This package aims to set system time in the precision of milliseconds.
+ - On Windows, you need to run your Python code with administration privileges for this package to work properly. Otherwise, `PermissionError` will be raised.
 ## How to use
 Install the package from PyPI
 ```
