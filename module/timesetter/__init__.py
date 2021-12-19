@@ -62,35 +62,6 @@ def set(time_object):
         timestamp = time_object.timestamp()
         time.clock_settime(realtime_clock_id, timestamp)
 
-    # elif platform.system() == "Linux":
-
-    #     time_tuple = (
-    #         time_object.year,
-    #         time_object.month,
-    #         time_object.day,
-    #         time_object.hour,
-    #         time_object.minute,
-    #         time_object.second,
-    #         int(time_object.microsecond / 1000),  # convert to milliseconds
-    #     )
-    #     clock_realtime = 0
-
-    #     class TimeSpec(ctypes.Structure):
-    #         _fields_ = [("tv_sec", ctypes.c_long), ("tv_nsec", ctypes.c_long)]
-
-    #     librt = ctypes.CDLL(ctypes.util.find_library("rt"))
-
-    #     ts = TimeSpec()
-    #     ts.tv_sec = int(time.mktime(datetime(*time_tuple[:6]).timetuple()))
-    #     ts.tv_nsec = time_tuple[6] * 1000000  # Millisecond to nanosecond
-
-    #     # http://linux.die.net/man/3/clock_settime
-    #     librt.clock_settime(clock_realtime, ctypes.byref(ts))
-
-    # elif platform.system() == "Darwin":  # macOS
-
-    #     raise NotImplementedError("macOS is not supported yet")
-
 
 def is_admin():
     try:
