@@ -7,6 +7,8 @@ from datetime import datetime, timezone, timedelta
 
 def set(time_object):
 
+    # ■■■■■ check the datetime object ■■■■■
+
     if type(time_object) != datetime:
         raise TypeError("Argument needs to be a datetime object")
 
@@ -19,12 +21,24 @@ def set(time_object):
     # now the time is represented in pure UTC timezone
     time_object = time_object.astimezone(timezone.utc)
 
-    if platform.system() == "Windows":
+    # ■■■■■ check administration privileges ■■■■■
 
-        if not is_admin():
-            raise PermissionError(
-                "Administrator privileges are needed to set system time on Windows"
-            )
+    if platform.system() == "Windows":
+        # on windows
+        is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+    elif platform.system() == "Linux" or platform.system() == "Darwin":
+        # on unix
+        is_admin = os.getuid() == 0
+
+    if not is_admin:
+        raise PermissionError(
+            "Administrator privileges are needed to set the system time. Make sure"
+            " you've run your Python code with administrator privileges."
+        )
+
+    # ■■■■■ change the system time ■■■■■
+
+    if platform.system() == "Windows":
 
         this_folder, _ = os.path.split(__file__)
         dll_filepath = os.path.join(this_folder, "on_windows.dll")
@@ -61,11 +75,3 @@ def set(time_object):
 
         timestamp = time_object.timestamp()
         time.clock_settime(realtime_clock_id, timestamp)
-
-
-def is_admin():
-    try:
-        is_admin = os.getuid() == 0
-    except AttributeError:
-        is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
-    return is_admin
