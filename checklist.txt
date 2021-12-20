@@ -37,4 +37,5 @@ python environment packages
     pip install flake8-blind-except
     pip install flake8-comprehensions
     pip install flake8-use-fstring
+    pip install build
     pip install twine
