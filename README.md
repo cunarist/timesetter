@@ -44,7 +44,6 @@ Install packages written in `requirements.txt` from PYPI
 
 ```
 pip install -r ./requirements.txt
-Install packages written in `requirements.txt` from PYPI
 ```
 
 Generate the distribution archive to `/dist`
