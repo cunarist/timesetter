@@ -5,7 +5,7 @@ import time
 from datetime import datetime, timezone, timedelta
 
 
-def set(time_object):
+def set(time_object: datetime):
 
     # ■■■■■ check the datetime object ■■■■■
 
@@ -25,10 +25,12 @@ def set(time_object):
 
     if platform.system() == "Windows":
         # on windows
-        is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+        is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0  # type: ignore
     elif platform.system() == "Linux" or platform.system() == "Darwin":
         # on unix
-        is_admin = os.getuid() == 0
+        is_admin = os.getuid() == 0  # type: ignore
+    else:
+        return
 
     if not is_admin:
         raise PermissionError(
@@ -42,7 +44,7 @@ def set(time_object):
 
         this_folder, _ = os.path.split(__file__)
         dll_filepath = os.path.join(this_folder, "on_windows.dll")
-        loaded_dll = ctypes.windll.LoadLibrary(dll_filepath)
+        loaded_dll = ctypes.windll.LoadLibrary(dll_filepath)  # type: ignore
 
         time_setter = loaded_dll["set_windows_time"]
         time_setter.argtypes = (
@@ -71,7 +73,7 @@ def set(time_object):
         # https://docs.python.org/ko/3.10/library/time.html#time.clock_settime
 
         # system-wide real-time clock
-        realtime_clock_id = time.CLOCK_REALTIME
+        realtime_clock_id = time.CLOCK_REALTIME  # type: ignore
 
         timestamp = time_object.timestamp()
-        time.clock_settime(realtime_clock_id, timestamp)
+        time.clock_settime(realtime_clock_id, timestamp)  # type: ignore
