@@ -1,0 +1,3 @@
+from datetime import datetime
+
+def set(time_object: datetime) -> None: ...
