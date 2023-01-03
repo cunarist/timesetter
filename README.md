@@ -1,8 +1,8 @@
-# User guide
+# User Guide
 
 Timesetter is a Python package to set system time regardless of operating system
 
-## Supported platforms
+## Supported Platforms
 
 - Windows
 - Linux
@@ -14,7 +14,7 @@ Timesetter is a Python package to set system time regardless of operating system
 - You need to pass a datetime object to the `set` function. If the timezone information was not included in the time object(naive), the package will assume that it's identical to the system.
 - You need to run your Python code with administration privileges for this package to work properly. Otherwise, `PermissionError` will be raised. This applies to all platforms.
 
-## How to use
+## How to Use
 
 Install the package from PyPI
 
@@ -32,13 +32,13 @@ target_time = datetime(year=2021, month=3, day=29, hour=15, minute=38, second=12
 timesetter.set(target_time)
 ```
 
-# For maintainers
+# For Maintainers
 
 ## Rules
 
 Type hints as well as stub files for Python should be provided for the maintainability of the code. Turn on strict type checking in whatever IDE you are using. If some third party packages doesn't support type checking very well, then you can write `# type: ignore` to suppress the warning.
 
-## Command line scripts
+## Command Line Scripts
 
 Install packages written in `requirements.txt` from PYPI
 
