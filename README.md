@@ -40,7 +40,7 @@ Type hints as well as stub files for Python should be provided for the maintaina
 
 ## Command Line Scripts
 
-Install packages written in `requirements.txt` from PYPI
+Install packages written in `requirements.txt` from PyPI
 
 ```
 pip install -r ./requirements.txt
