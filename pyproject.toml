@@ -1,6 +1,11 @@
+[project]
+name = "timesetter"
+version = "1.8.0"
+description = "A Python package to set system time regardless of operating system"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
 [build-system]
-requires = [
-    "setuptools>=56",
-    "wheel"
-]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
