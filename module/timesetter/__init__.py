@@ -1,15 +1,14 @@
+import ctypes
 import os
 import platform
-import ctypes
 import time
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 def set(time_object: datetime):
-
     # ■■■■■ check the datetime object ■■■■■
 
-    if type(time_object) != datetime:
+    if type(time_object) is not datetime:
         raise TypeError("Argument needs to be a datetime object")
 
     if time_object.tzinfo is None:
@@ -41,7 +40,6 @@ def set(time_object: datetime):
     # ■■■■■ change the system time ■■■■■
 
     if platform.system() == "Windows":
-
         this_folder, _ = os.path.split(__file__)
         dll_filepath = os.path.join(this_folder, "on_windows.dll")
         loaded_dll = ctypes.windll.LoadLibrary(dll_filepath)  # type: ignore
