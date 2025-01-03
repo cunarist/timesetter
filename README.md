@@ -18,13 +18,13 @@ Timesetter is a Python package to set system time regardless of operating system
 
 Install the package from PyPI
 
-```
+```shell
 pip install timesetter
 ```
 
 Then import it in your Python code
 
-```
+```python
 from datetime import datetime
 import timesetter
 
@@ -34,26 +34,21 @@ timesetter.set(target_time)
 
 # For Maintainers
 
-## Rules
+## Preparation
 
-Type hints as well as stub files for Python should be provided for the maintainability of the code. Turn on strict type checking in whatever IDE you are using. If some third party packages doesn't support type checking very well, then you can write `# type: ignore` to suppress the warning.
+- The modern Python package manager [`uv`](https://docs.astral.sh/uv/) is used for dependency resolution. Please ensure it is installed on your system before proceeding.
+- Code checking should always be enabled to maintain code quality. Make sure [Ruff](https://docs.astral.sh/ruff/) and [Pyright](https://microsoft.github.io/pyright/#/) are activated in your IDE.
 
 ## Command Line Scripts
-
-Install packages written in `requirements.txt` from PyPI
-
-```
-pip install -r ./requirements.txt
-```
 
 Generate the distribution archive to `/dist`
 
 ```
-python -m build
+uv build
 ```
 
 Upload the package to PYPI
 
 ```
-python -m twine upload dist/*
+uv publish
 ```
